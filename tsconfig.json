@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es5",                 // or "es6", "es7", etc.
+    "module": "commonjs",             // or "amd", "esnext", etc.
+    "strict": true,                 // Enable all strict TypeScript checks
+    "esModuleInterop": true,        // Enable interoperability with ES modules
+    "skipLibCheck": true            // Skip type checking of library files
+  },
+  "include": ["screens/**/*.ts", "models/**/*.ts"]   // Specify files to include for TypeScript compilation
+}
