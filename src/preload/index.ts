@@ -11,7 +11,7 @@ let gotEmployeeCallback
 let gotEmployeeUpdatedCallback
 let gotDeletedResultCallback
 
-let getEmployees = () => {
+const getEmployees = () => {
   console.log(`mainPreload > getEmployees`)
 
   employees.getEmployees().then((res) => {
@@ -19,18 +19,18 @@ let getEmployees = () => {
   })
 }
 
-let gotEmployees = (callback) => {
+const gotEmployees = (callback) => {
   gotEmployeeCallback = callback
 }
 
-let saveEmployee = (employee) => {
+const saveEmployee = (employee) => {
   console.log(
     `mainPreload > Salary: ${employee.salary}, Name: ${employee.name}, Position: ${employee.position}`
   )
   return employees.addEmployee(employee)
 }
 
-let deleteEmployees = (id) => {
+const deleteEmployees = (id) => {
   console.log(`mainPreload > Delete : ${id}`)
 
   employees.deleteEmployee(id).then((res) => {
@@ -38,11 +38,11 @@ let deleteEmployees = (id) => {
   })
 }
 
-let gotDeletedResult = (callback) => {
+const gotDeletedResult = (callback) => {
   gotDeletedResultCallback = callback
 }
 
-let updateEmployee = (id, emp) => {
+const updateEmployee = (id, emp) => {
   console.log(`mainPreload > upDateEmployee : ${id}`)
 
   const employee = {
@@ -56,13 +56,10 @@ let updateEmployee = (id, emp) => {
   })
 }
 
-let gotEmployeeUpdatedResult = (callback) => {
+const gotEmployeeUpdatedResult = (callback) => {
   gotEmployeeUpdatedCallback = callback
 }
 
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)

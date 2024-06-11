@@ -18,10 +18,18 @@ export class Employees {
   }
 
   private async getCollection(): Promise<Mongo.Collection<Employee>> {
-    await this.client.connect()
-    const db = this.client.db(this.dbName)
-    const employees = db.collection<Employee>('employees')
-    return employees
+    try {
+      // Conectando ao servidor MongoDB, aguarde a promessa ser resolvida
+      await this.client.connect()
+      console.log('Conexão com o MongoDB estabelecida com sucesso.')
+
+      const db = this.client.db(this.dbName)
+      const employees = db.collection<Employee>('employees')
+      return employees
+    } catch (error) {
+      console.error('Erro ao conectar ao banco de dados:', error)
+      throw error
+    }
   }
 
   async getEmployees(): Promise<Employee[]> {

@@ -23,6 +23,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "@types/mongodb": "^4.0.7",
     "mongo": "^0.1.0",
     "mongodb": "^6.7.0"
   },
